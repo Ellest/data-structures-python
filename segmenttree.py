@@ -8,14 +8,7 @@ class TreeNode:
 
     def _print(self):
         print(self.val)
-    """
-    def __init__(self, v):
-        self.val = v
-        self.left, self.right = None, None
-    def __init__(self, v, l, r):
-        self.val = v
-        self.left, self.right = l, r
-    """ 
+
 class NodeBased(object):
     arr = []
     head = None
@@ -51,15 +44,6 @@ class NodeBased(object):
             print("Recheck Index values!")
             return None
         return self.minRecursion(i, j, 0, len(self.arr)-1, self.head)
-    # Inorder traversal for tree
-    def inorderR(self, node):
-        if not node: return
-        self.inorderR(node.left)
-        print(node.val)
-        self.inorderR(node.right)
-
-    def inorderTraversal(self):
-        inorderR(self.head)
 
 _list = [int(i) for i in raw_input().split()]
 n = NodeBased()
