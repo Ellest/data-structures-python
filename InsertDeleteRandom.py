@@ -1,3 +1,5 @@
+import random
+
 """
 Data Structure supports the following operations:
 
