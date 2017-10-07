@@ -40,14 +40,15 @@ class InsertDeleteRandom:
 			return False
 		end = len(self._list) - 1
 		if end in self._map[val]:
-			self._list.pop()
 			self._map[val].remove(end)
 		else:
-			pos = self._map[val].pop()
-			self._list[pos], self._list[-1] = self._list[-1], self._list[pos]
-			element = self._list[pos] 
+			pos = self._map[val].pop() # grabs a random value from index list
+			self._list[pos], self._list[-1] = self._list[-1], self._list[pos] # swap with end
+			element = self._list[pos] # swapped element (originally at end)
+			# update index list
 			self._map[element].remove(end)
 			self._map[element].add(pos)
+		self._list.pop()
 		if not self._map[val]: # delete from map if list does not contain anymore of it
 			del self._map[val]
 		return True
