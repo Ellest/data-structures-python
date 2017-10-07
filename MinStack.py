@@ -4,6 +4,8 @@ Stack that keeps track of the minmum value in the stack.
 Uses O(n) extra space to keep minmum at each value
 
 O(1) push, pop, peek, get_min 
+
+Easily modifiable to implement a max stack instead
 """
 
 class MinStack:
