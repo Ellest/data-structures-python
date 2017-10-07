@@ -1,2 +1,2 @@
-# data-structures-python
-Popular applied data structures implmented in Python
+# Data Structures
+Popular applied data structures implemented in Python
