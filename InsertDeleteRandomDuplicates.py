@@ -48,6 +48,8 @@ class InsertDeleteRandom:
 			element = self._list[pos] 
 			self._map[element].remove(end)
 			self._map[element].add(pos)
+		if not self._map[val]: # delete from map if list does not contain anymore of it
+			del self._map[val]
 		return True
 
 	"""
