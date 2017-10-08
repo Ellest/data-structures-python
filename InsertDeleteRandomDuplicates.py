@@ -48,7 +48,7 @@ class InsertDeleteRandom:
 			# update index list
 			self._map[element].remove(end)
 			self._map[element].add(pos)
-		self._list.pop()
+		self._list.pop() # remove element
 		if not self._map[val]: # delete from map if list does not contain anymore of it
 			del self._map[val]
 		return True
