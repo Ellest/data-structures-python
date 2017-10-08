@@ -1,4 +1,18 @@
 """
+This data structure keeps track of the count of each element inserted. It also
+returns min and max in O(1) time as well. Uses a doubly linked list to keep track
+of distinct counts to achieve efficiency. 
+
+Provides these operations in O(1):
+
+    - whether a key exists
+    - count of a key
+    - any (or all) elements with the minimum/maximum count
+
+"""
+
+
+"""
 Node for doubly linked list
 """
 class Node:
