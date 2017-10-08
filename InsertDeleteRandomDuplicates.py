@@ -8,6 +8,10 @@ Data structure that supports the following operations in O(1) time:
 - Delete
 - Get random element from list
 
+*Note:
+	This version handles duplicates as well. Requires a bit of extra overhead
+	compared to the singular version.
+
 """
 
 class InsertDeleteRandom:
