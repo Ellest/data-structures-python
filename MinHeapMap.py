@@ -1,6 +1,8 @@
 """
-# Heap of key,val pairs in the form of [key, val]. List was used since tuples are immutable
-# Extended, with a map, to use for Dijkstra's algorithm
+This is an extended heap of of key,val pairs in the form of [key, val]. 
+List was used since tuples are immutable. This data stucture allows containment
+check and allows direct access/update of a specific key in O(1) for access and O(log n)
+for update. This data structure works well with Dijkstra's algorithm
 """
 class MinHeap: 
 
