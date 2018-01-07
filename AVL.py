@@ -43,7 +43,6 @@ class TreeNode:
         return abs(self.left_h - self.right_h)
 
 class AVLTree:
-
     """
     BST with AVL balancing. Uses a bit of an assumption that the tree is balanced
     before each insert. This means we can identify the type of rotation sequence
@@ -59,6 +58,7 @@ class AVLTree:
         treeObj = cls(**kwargs)
         for _ in range(size):
             treeObj.insert(random.randint(1, 100)) 
+        return treeObj
 
     def searchHelper(self, val, node):
         if not node:
@@ -134,13 +134,54 @@ class AVLTree:
         if type(key) == int:
             self.root = self.deleteHelper(self.root, key)
 
+    def balanceChecker(self, root):
+        if not root:
+            return True
+        if root.height_diff() > 1:
+            return False
+        return self.balanceChecker(root.left) and self.balanceChecker(root.right)
+
+    def checkBalance(self):
+        return self.balanceChecker(self.root)
+
+
+"""
+
+Additional Check for height balance. This also allows me to check for whether height
+attributes have been correctly set for each Tree Node or not. 
+
+"""
+
+def getMaxHeight(node):
+    if not node:
+        return 0
+    left = getMaxHeight(node.left)
+    if left == -1:
+        return -1
+    right = getMaxHeight(node.right)
+    return max(left, right) + 1 if right != -1 and abs(left - right) <= 1 else -1
+
+def isBalanced(root):
+    return not root or getMaxHeight(root) != -1
+    
+
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='AVL Tree Data Structure')
     parser.add_argument('-d', '--debug', help='Debug Flag', action='store_true', required=False)
     parser.add_argument('-r', '--random', help='Random Flag', action='store_true', required=False)
     parser.add_argument('-s', '--size', help='Random Count', required=True)
+    parser.add_argument('-t', '--test', help='Tester Flag. Test loop iteration count.', required=False)
     args = vars(parser.parse_args())
-    if args['debug']:
+    if args['test']:
+        try:
+            for _ in range(int(args['test'])):
+                avl = AVLTree.initWithRandom(size=int(args['size']))
+                assert isBalanced(avl.root) and avl.checkBalance(), 'Not Balanced...'
+        except AssertionError as ae:
+            print(ae)
+        else:
+            print('All Passed!!')
+    elif args['debug']:
         viz = None
         try:
             from BTreeVisualizer import BTreeVisualizer
