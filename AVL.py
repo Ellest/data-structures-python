@@ -169,8 +169,8 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='AVL Tree Data Structure')
     parser.add_argument('-d', '--debug', help='Debug Flag', action='store_true', required=False)
     parser.add_argument('-r', '--random', help='Random Flag', action='store_true', required=False)
-    parser.add_argument('-s', '--size', help='Random Count', required=True)
     parser.add_argument('-t', '--test', help='Tester Flag. Test loop iteration count.', required=False)
+    parser.add_argument('-s', '--size', help='Random Count. REQUIRED', required=True)
     args = vars(parser.parse_args())
     if args['test']:
         try:
@@ -188,6 +188,7 @@ if __name__ == '__main__':
             viz = BTreeVisualizer()
         except ImportError as e:
             print('BTreeVisualizer Not Found. Make sure to include it in the same dir!!')
+            print('You can find the repo for this BTreeVisualizer here: https://github.com/Ellest/BinaryTreeVisualizer')
         else:
             if args['random']:
                 avl = AVLTree.initWithRandom(size=int(args['size']), debug=True, visualizer=viz)
